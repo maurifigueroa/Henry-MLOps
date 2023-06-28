@@ -163,7 +163,7 @@ movies_ml = movies_ml.drop(columns = ["id", "title"])
 movies_ml = pd.concat([movies_ml, vectores_sinopsis], axis = 1)
 
 # Importamos las predicciones de KMeans que se hicieron anteriormente
-labels = np.loadtxt('Dataset/labels.csv', delimiter=',', dtype = int)
+labels = np.loadtxt('labels.csv', delimiter=',', dtype = int)
 
 @app.get('/recomendacion/{titulo_film}')
 def recomendacion(titulo_film: str):
