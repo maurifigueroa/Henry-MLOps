@@ -155,8 +155,8 @@ def get_director(nombre_director: str):
 # Machine Learning. Clustering
 
 # Cargamos el dataframe de movies transformado y escalado, luego del ETL
-movies_ml = pd.read_csv('Dataset/movies_ml.csv')
-vectores_sinopsis = pd.read_csv('Dataset/vectores_sinopsis.csv')
+movies_ml = pd.read_csv('movies_ml.csv')
+vectores_sinopsis = pd.read_csv('vectores_sinopsis.csv')
  
 # Borramos las columnas innecesarias en el modelo de kmeans
 movies_ml = movies_ml.drop(columns = ["id", "title"])
