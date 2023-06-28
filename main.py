@@ -6,13 +6,13 @@ from unidecode import unidecode
 from fastapi import FastAPI
 
 # Cargamos el dataframe de movies no escalado, luego del ETL, para las primeras funciones
-movies_api = pd.read_csv('Dataset/movies_aux.csv', parse_dates = ['release_date'],
+movies_api = pd.read_csv('movies_aux.csv', parse_dates = ['release_date'],
                          usecols = ["id", "title", "release_year", "release_date", "popularity", 
                                     "vote_average", "vote_count", "return", "budget", "revenue"])
 
 # Cargamos credits limpio, que esta expandido en dos df distintos (uno para el elenco (cast) y otro para el equipo de filmación (crew))
-credits_cast = pd.read_csv('Dataset/credits_cast.csv')
-credits_crew = pd.read_csv('Dataset/credits_crew.csv')
+credits_cast = pd.read_csv('credits_cast.csv')
+credits_crew = pd.read_csv('credits_crew.csv')
 
 # Creamos una instancia de FastAPI
 app = FastAPI()
@@ -155,7 +155,7 @@ def get_director(nombre_director: str):
 # Machine Learning. Clustering
 
 # Cargamos el dataframe de movies transformado y escalado, luego del ETL
-movies_ml = pd.read_csv('Dataset/movies_aux_ml.csv')
+movies_ml = pd.read_csv('Dataset/movies_ml.csv')
 vectores_sinopsis = pd.read_csv('Dataset/vectores_sinopsis.csv')
  
 # Borramos las columnas innecesarias en el modelo de kmeans
