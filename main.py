@@ -169,6 +169,7 @@ labels = np.loadtxt('labels.csv', delimiter=',', dtype = int)
 def recomendacion(titulo_film: str):
     '''Ingresas un nombre de pelicula y te recomienda las similares en una lista'''
     rows = movies_ml.loc[movies_api["title"] == titulo_film]
+    titulos_similares_general = []
     for indice, row in rows.iterrows():
         cluster_referencia = labels[indice]
         # Encontrar todas las películas en el mismo cluster que el punto de referencia
@@ -181,7 +182,7 @@ def recomendacion(titulo_film: str):
         # Obtener los títulos de las películas similares
         titulos_similares = [movies_api.loc[movies_api.index == index_pelicula]['title'].values[0]
                              for index_pelicula in peliculas_similares.index]
-        titulos_similares
-    return {'lista recomendada': titulos_similares}
+        titulos_similares_general.append({'lista recomendada': titulos_similares})
+    return titulos_similares_general
 
 
