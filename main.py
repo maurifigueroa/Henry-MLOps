@@ -50,7 +50,7 @@ def dia_to_num(dia):
     if dia in dias:
         for index, valor in enumerate(dias):
             if dia == valor:
-                indice_dia = index+1
+                indice_dia = index
                 return indice_dia
     else:
         raise ValueError("El día ingresado no es válido.")
@@ -60,7 +60,7 @@ def cantidad_filmaciones_dia(dia):
     if isinstance(dia, str):
         dia = unidecode(dia.strip().lower())
         dia_int = dia_to_num(dia)
-        filmaciones_dia = int(movies_api["release_date"].apply(lambda x: True if x.day == dia_int else False).sum())
+        filmaciones_dia = int(movies_api["release_date"].apply(lambda x: True if x.weekday() == dia_int else False).sum())
         # return f"{filmaciones_dia} fueron estrenadas en los días {dia}"
         return {'dia': dia, 'cantidad': filmaciones_dia}
     else:
